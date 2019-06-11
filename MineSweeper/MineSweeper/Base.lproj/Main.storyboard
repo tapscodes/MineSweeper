@@ -106,6 +106,10 @@
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="f0a-4F-jnk" id="ACU-fS-6tl"/>
+                                            <outlet property="delegate" destination="f0a-4F-jnk" id="KTC-p2-6jT"/>
+                                        </connections>
                                     </collectionView>
                                 </subviews>
                             </stackView>
