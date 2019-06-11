@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0274C5C422AAD3E5005EACD4 /* MineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274C5C322AAD3E5005EACD4 /* MineCell.swift */; };
-		0274C5C622AAD453005EACD4 /* MineField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274C5C522AAD453005EACD4 /* MineField.swift */; };
 		02BBADF822A03E900025C934 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BBADF722A03E900025C934 /* AppDelegate.swift */; };
 		02BBADFA22A03E910025C934 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BBADF922A03E910025C934 /* ViewController.swift */; };
 		02BBADFD22A03E910025C934 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02BBADFB22A03E910025C934 /* Main.storyboard */; };
@@ -18,7 +17,6 @@
 
 /* Begin PBXFileReference section */
 		0274C5C322AAD3E5005EACD4 /* MineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineCell.swift; sourceTree = "<group>"; };
-		0274C5C522AAD453005EACD4 /* MineField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineField.swift; sourceTree = "<group>"; };
 		02BBADF422A03E900025C934 /* MineSweeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MineSweeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02BBADF722A03E900025C934 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02BBADF922A03E910025C934 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,7 +59,6 @@
 				02BBADF722A03E900025C934 /* AppDelegate.swift */,
 				02BBADFB22A03E910025C934 /* Main.storyboard */,
 				02BBADF922A03E910025C934 /* ViewController.swift */,
-				0274C5C522AAD453005EACD4 /* MineField.swift */,
 				0274C5C322AAD3E5005EACD4 /* MineCell.swift */,
 				02BBADFE22A03E910025C934 /* Assets.xcassets */,
 				02BBAE0022A03E910025C934 /* LaunchScreen.storyboard */,
@@ -144,7 +141,6 @@
 				02BBADFA22A03E910025C934 /* ViewController.swift in Sources */,
 				02BBADF822A03E900025C934 /* AppDelegate.swift in Sources */,
 				0274C5C422AAD3E5005EACD4 /* MineCell.swift in Sources */,
-				0274C5C622AAD453005EACD4 /* MineField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

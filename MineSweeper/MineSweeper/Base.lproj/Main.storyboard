@@ -24,22 +24,22 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kZN-Eh-aMX">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgp-Cy-4zG">
-                                                <rect key="frame" x="0.0" y="0.0" width="180" height="50"/>
-                                                <state key="normal" title="Game"/>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgp-Cy-4zG">
+                                                <rect key="frame" x="0.0" y="0.0" width="39" height="50"/>
+                                                <state key="normal" title="Reset"/>
                                                 <connections>
                                                     <action selector="gamePressed:" destination="f0a-4F-jnk" eventType="touchUpInside" id="i5G-aT-dq2"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ja-gG-8EN">
-                                                <rect key="frame" x="180" y="0.0" width="54" height="50"/>
+                                                <rect key="frame" x="39" y="0.0" width="336" height="50"/>
                                                 <state key="normal" title="Options"/>
                                                 <connections>
                                                     <action selector="optionsPessed:" destination="f0a-4F-jnk" eventType="touchUpInside" id="pJi-jE-L0c"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Opx-Ci-Lvy">
-                                                <rect key="frame" x="234" y="0.0" width="180" height="50"/>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Opx-Ci-Lvy">
+                                                <rect key="frame" x="375" y="0.0" width="39" height="50"/>
                                                 <state key="normal" title="Help"/>
                                                 <connections>
                                                     <action selector="helpPressed:" destination="f0a-4F-jnk" eventType="touchUpInside" id="UxE-35-3d4"/>
@@ -78,7 +78,7 @@
                                             <constraint firstAttribute="height" constant="50" id="wgN-IV-jKZ"/>
                                         </constraints>
                                     </stackView>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EF5-7d-pzs" customClass="MineField" customModule="MineSweeper" customModuleProvider="target">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EF5-7d-pzs">
                                         <rect key="frame" x="0.0" y="100" width="414" height="718"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Wui-18-H6E">
@@ -120,6 +120,7 @@
                         <viewLayoutGuide key="safeArea" id="hMn-N6-yJQ"/>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="EF5-7d-pzs" id="maU-Dh-lc1"/>
                         <outlet property="facePic" destination="R7S-xE-drn" id="oQt-TX-TCx"/>
                         <outlet property="minesLeft" destination="W0I-6n-Exk" id="aau-x1-RPb"/>
                         <outlet property="timer" destination="Q0g-38-FcZ" id="mee-PF-NcZ"/>
