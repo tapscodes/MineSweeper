@@ -53,6 +53,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //NORMAL FUNCTIONS
     //sets up the mineField array with all the mines
     func setUp(){
+        collectionView.isUserInteractionEnabled=true
         var i = 0
         var totMines = mines
         //makes a blank minefield
@@ -74,6 +75,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //what happens when reset is pressed (used to be called game)
     @IBAction func gamePressed(_ sender: Any) {
         mineField.removeAll()
+        setUp()
     }
     //what happens when options are pressed
     @IBAction func optionsPessed(_ sender: Any) {
