@@ -12,7 +12,7 @@ class MineCell: UICollectionViewCell{
     override var isSelected: Bool{
         didSet{
             print(indexPicked)
-            if (self.isSelected && mineField[indexPicked]){
+            if (self.isSelected && !mineField[indexPicked]){
                 mineImg.image = UIImage(named: "uncovered")
             }
             else if (self.isSelected){

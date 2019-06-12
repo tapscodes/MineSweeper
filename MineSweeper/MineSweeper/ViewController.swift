@@ -54,10 +54,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //sets up the mineField array with all the mines
     func setUp(){
         var i = 0
+        var totMines = mines
+        //makes a blank minefield
         while(i<(width*length)){
-            let randomBool = Bool.random()
-            mineField.append(randomBool)
+            mineField.append(false)
             i+=1
+        }
+        //sets up the mines
+        while(totMines>0){
+            var randomInt = Int.random(in: 0..<(length*width))
+            while(mineField[randomInt]){
+                randomInt = Int.random(in: 0..<(length*width))
+            }
+            mineField[randomInt]=true
+            totMines-=1
         }
     }
     //BUTTONS AT TOP
