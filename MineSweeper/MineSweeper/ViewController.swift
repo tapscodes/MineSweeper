@@ -12,6 +12,7 @@ var width = 8
 var length = 8
 var mines = 8
 var mineField: [Bool] = []
+var indexPicked = 0
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var facePic: UIImageView!
     @IBOutlet weak var minesLeft: UILabel!
@@ -19,6 +20,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUp()
         minesLeft.text = "Mines Left:\(mines)"
         facePic.image = UIImage(named: "happy")
         // Do any additional setup after loading the view.
@@ -43,6 +45,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let viewWidth = Double(self.view.frame.width)
         let viewHeight = Double(self.view.frame.height)
         return CGSize(width: (viewWidth / Double(width)), height: (viewHeight / Double(length)))
+    }
+    //what happens when a mine spot is clicked
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        indexPicked = indexPath.row
     }
     //NORMAL FUNCTIONS
     //sets up the mineField array with all the mines
