@@ -15,6 +15,7 @@ var totLeft = 0
 var mineField: [Bool] = []
 var indexPicked = 0
 var alive = true
+var mineResult = 0
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var facePic: UIImageView!
     @IBOutlet weak var minesLeft: UILabel!
@@ -55,6 +56,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //what happens when a mine spot is clicked
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         indexPicked = indexPath.row
+        mineResult = checkNearby(index: indexPicked)
         totLeft-=1
         if(!alive){
             endGame()
@@ -135,6 +137,193 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView.reloadData()
         //resets time when game is reset
         time=0
+    }
+    //checks for nearby mines and returns the amount
+    func checkNearby(index: Int) -> Int{
+        var surMines = 0
+        //if on top row
+        if(index<=width){
+            //if the first one, else if last one, else other
+            if(index==0) {
+                //right
+                if(mineField[index+1]){
+                    surMines+=1
+                }
+                //down
+                if(mineField[index+width]){
+                   surMines+=1
+                }
+                //down right
+                if(mineField[index+width+1]){
+                    surMines+=1
+                } //END OF FIRST
+            } else if (index==width) {
+                //left
+                if(mineField[index-1]){
+                    surMines+=1
+                }
+                //down
+                if(mineField[index+width]){
+                    surMines+=1
+                }
+                //down left
+                if(mineField[index+width-1]){
+                    surMines+=1
+                } //END OF LAST
+            } else {
+                //left
+                if(mineField[index-1]){
+                    surMines+=1
+                }
+                //right
+                if(mineField[index+1]){
+                    surMines+=1
+                }
+                //down
+                if(mineField[index+width]){
+                    surMines+=1
+                }
+                //down left
+                if(mineField[index+width-1]){
+                    surMines+=1
+                }
+                //down right
+                if(mineField[index+width+1]){
+                    surMines+=1
+                }
+            }
+        }//if on bottom row
+        else if(index>=((width*length)-width)){
+            //if the first one, else if last one, else other
+            if((index % width) == 0){
+                //right
+                if(mineField[index+1]){
+                    surMines+=1
+                }
+                //up
+                if(mineField[index-width]){
+                    surMines+=1
+                }
+                //up right
+                if(mineField[index-width+1]){
+                    surMines+=1
+                } //END OF FIRST
+            } else if (index==width*length-1) {
+                //left
+                if(mineField[index-1]){
+                    surMines+=1
+                }
+                //up
+                if(mineField[index-width]){
+                    surMines+=1
+                }
+                //up left
+                if(mineField[index-width-1]){
+                    surMines+=1
+                } //END OF LAST
+            } else {
+                //left
+                if(mineField[index-1]){
+                    surMines+=1
+                }
+                //right
+                if(mineField[index+1]){
+                    surMines+=1
+                }
+                //up
+                if(mineField[index-width]){
+                    surMines+=1
+                }
+                //up left
+                if(mineField[index-width-1]){
+                    surMines+=1
+                }
+                //up right
+                if(mineField[index-width+1]){
+                    surMines+=1
+                }
+            } //if anywhere else
+        } else {
+            if((index % width) == 0){ //LEFT
+                //right
+                if(mineField[index+1]){
+                    surMines+=1
+                }
+                //up
+                if(mineField[index-width]){
+                    surMines+=1
+                }
+                //up right
+                if(mineField[index-width+1]){
+                    surMines+=1
+                } //END OF FIRST
+                //down
+                if(mineField[index+width]){
+                    surMines+=1
+                }
+                //down right
+                if(mineField[index+width+1]){
+                    surMines+=1
+                }
+            } else if (index % width == width-1) { //RIGHT
+                //left
+                if(mineField[index-1]){
+                    surMines+=1
+                }
+                //up
+                if(mineField[index-width]){
+                    surMines+=1
+                }
+                //up left
+                if(mineField[index-width-1]){
+                    surMines+=1
+                }
+                //down
+                if(mineField[index+width]){
+                    surMines+=1
+                }
+                //down left
+                if(mineField[index+width-1]){
+                    surMines+=1
+                } //END OF SECOND
+            }else{
+            //left
+            if(mineField[index-1]){
+                surMines+=1
+            }
+            //right
+            if(mineField[index+1]){
+                surMines+=1
+            }
+            //up
+            if(mineField[index-width]){
+                surMines+=1
+            }
+            //up left
+            if(mineField[index-width-1]){
+                surMines+=1
+            }
+            //up right
+            if(mineField[index-width+1]){
+                surMines+=1
+            }
+            //down
+            if(mineField[index+width]){
+                surMines+=1
+            }
+            //down left
+            if(mineField[index+width-1]){
+                surMines+=1
+            }
+            //down right
+            if(mineField[index+width+1]){
+                surMines+=1
+            }
+            }
+        }
+        //returns mines found
+        print(index)
+        return surMines
     }
     //BUTTONS AT TOP
     //what happens when reset is pressed (used to be called game)
