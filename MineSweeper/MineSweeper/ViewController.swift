@@ -131,6 +131,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             width = Int(tempWidth!)!
             length = Int(tempLength!)!
             mines = Int(tempMines!)!
+            self.reset()
         }))
         self.present(alert, animated: true)
     }
@@ -343,7 +344,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //what happens when options are pressed
     @IBAction func optionsPessed(_ sender: Any) {
         threeTextField(title: "Set up your custom board", message: "Depending on size, app may not function well (try to keep dimenstions under 10:10)")
-        reset()
     }
     //what happens when help is pressed
     @IBAction func helpPressed(_ sender: Any) {
