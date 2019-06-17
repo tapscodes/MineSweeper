@@ -97,6 +97,27 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true)
     }
+    //makes an alert with 3 text fields
+    func threeTextField(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addTextField()
+        alert.addTextField()
+        alert.addTextField()
+        alert.textFields![0].placeholder = "Enter width"
+        alert.textFields![1].placeholder = "Enter length"
+        alert.textFields![2].placeholder = "Enter mines"
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action) in
+            //sets values entered
+            let tempWidth = alert.textFields![0].text
+            let tempLength = alert.textFields![1].text
+            let tempMines = alert.textFields![2].text
+            width = Int(tempWidth!)!
+            length = Int(tempLength!)!
+            mines = Int(tempMines!)!
+        }))
+        self.present(alert, animated: true)
+    }
     //BUTTONS AT TOP
     //what happens when reset is pressed (used to be called game)
     @IBAction func gamePressed(_ sender: Any) {
@@ -110,9 +131,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     //what happens when options are pressed
     @IBAction func optionsPessed(_ sender: Any) {
-        let alert = UIAlertController()
-        alert.title = "Enter Size and Mines"
-        self.present(alert, animated: true)
+        threeTextField(title: "Set up your custom board", message: "Depending on size, app may not function well (try to keep dimenstions under 10:10)")
+        mineField.removeAll()
+        //resets mine placement after old mines are removed
+        viewDidLoad()
+        //resets visuals of minefield after mines are replaced in random locations
+        collectionView.reloadData()
+        //resets time when game is reset
+        time=0
     }
     //what happens when help is pressed
     @IBAction func helpPressed(_ sender: Any) {
