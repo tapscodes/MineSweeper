@@ -16,8 +16,7 @@ class MineCell: UICollectionViewCell{
             }
             else if (self.isSelected){
                 mineImg.image = UIImage(named: "mine")
-                ViewController().collectionView.isUserInteractionEnabled = false
-                ViewController().facePic.image = UIImage(named: "dead")
+                alive=false
             }
         }
     }

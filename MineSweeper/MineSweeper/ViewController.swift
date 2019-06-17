@@ -13,6 +13,7 @@ var length = 8
 var mines = 8
 var mineField: [Bool] = []
 var indexPicked = 0
+var alive = true
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var facePic: UIImageView!
     @IBOutlet weak var minesLeft: UILabel!
@@ -26,7 +27,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Do any additional setup after loading the view.
         var timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { [weak self] (_)  in
             time += 0.1
+            //stops timer if user picks a mine
+            if(alive){
             self!.timer.text = String(format: "%.1f", time)
+            }
         })
     }
     //MINEFIELD SETUP
@@ -49,10 +53,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //what happens when a mine spot is clicked
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         indexPicked = indexPath.row
+        if(!alive){
+            endGame()
+        }
     }
     //NORMAL FUNCTIONS
     //sets up the mineField array with all the mines
     func setUp(){
+        alive=true
         collectionView.isUserInteractionEnabled=true
         var i = 0
         var totMines = mines
@@ -71,11 +79,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             totMines-=1
         }
     }
+    func endGame(){
+        collectionView.isUserInteractionEnabled=false
+        facePic.image = UIImage(named: "dead")
+    }
     //BUTTONS AT TOP
     //what happens when reset is pressed (used to be called game)
     @IBAction func gamePressed(_ sender: Any) {
         mineField.removeAll()
-        setUp()
+        //resets mine placement after old mines are removed
+        viewDidLoad()
+        //resets visuals of minefield after mines are replaced in random locations
+        collectionView.reloadData()
+        //resets time when game is reset
+        time=0
     }
     //what happens when options are pressed
     @IBAction func optionsPessed(_ sender: Any) {
