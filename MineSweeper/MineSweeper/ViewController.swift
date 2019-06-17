@@ -23,6 +23,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        alive = true
         setUp()
         minesLeft.text = "Total Mines:\(mines)"
         facePic.image = UIImage(named: "happy")
@@ -64,6 +65,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if(totLeft == mines){
             basicAlert(title: "You Won!", message: "You were alive for \(timer.text!) seconds. Hit reset to try again!")
         }
+        mineResult=9
     }
     //removes space (horizontally) between items
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -141,8 +143,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //checks for nearby mines and returns the amount
     func checkNearby(index: Int) -> Int{
         var surMines = 0
+        //if a mine
+        if(mineField[index]){
+            surMines+=9
+        }
         //if on top row
-        if(index<=width){
+        else if(index<=width){
             //if the first one, else if last one, else other
             if(index==0) {
                 //right
@@ -157,7 +163,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 if(mineField[index+width+1]){
                     surMines+=1
                 } //END OF FIRST
-            } else if (index==width) {
+            } else if (index==width-1) {
                 //left
                 if(mineField[index-1]){
                     surMines+=1
@@ -322,7 +328,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             }
         }
         //returns mines found
-        print(index)
+        print(mineField[index])
         return surMines
     }
     //BUTTONS AT TOP

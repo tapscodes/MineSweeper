@@ -38,7 +38,7 @@ class MineCell: UICollectionViewCell{
             else if (self.isSelected && (mineResult==8)){
                 mineImg.image = UIImage(named: "eight")
             }
-            else if (self.isSelected){
+            else if (self.isSelected && mineResult==9){
                 mineImg.image = UIImage(named: "mine")
                 alive=false
             }
