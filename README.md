@@ -3,6 +3,8 @@ My attempt at recreating minesweeper in swift.
 ## FAQ
 ### Why did you make this?
 I needed to make a game for my APCSA last marking period benchmark assessment and I decided minesweeper would be fun to make.
+### Final Grade?
+I don't know my final grade yet, will update when known!
 ### How long did this take to make?
 Around 5-6 hours of code.
 ### Did you make the sprites/graphics?
