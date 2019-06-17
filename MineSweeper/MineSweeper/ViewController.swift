@@ -23,6 +23,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.isScrollEnabled=false
         alive = true
         setUp()
         minesLeft.text = "Total Mines:\(mines)"
@@ -51,7 +52,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //sets size of each cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let viewWidth = Double(self.view.frame.width)
-        let viewHeight = Double(self.view.frame.height)
+        //-100 because thats how much space stuff at top takes up
+        let viewHeight = Double(self.view.frame.height)-100
         return CGSize(width: (viewWidth / Double(width)), height: (viewHeight / Double(length)))
     }
     //what happens when a mine spot is clicked
