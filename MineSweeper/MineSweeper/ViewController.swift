@@ -147,7 +147,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             surMines+=9
         }
         //if on top row
-        else if(index<=width){
+        else if(index<width){
             //if the first one, else if last one, else other
             if(index==0) {
                 //right
@@ -327,7 +327,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             }
         }
         //returns mines found
-        print(mineField[index])
+        print(surMines)
         return surMines
     }
     //BUTTONS AT TOP
