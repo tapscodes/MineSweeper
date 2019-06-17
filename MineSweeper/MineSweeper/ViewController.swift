@@ -55,10 +55,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return CGSize(width: (viewWidth / Double(width)), height: (viewHeight / Double(length)))
     }
     //what happens when a mine spot is clicked
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         indexPicked = indexPath.row
         mineResult = checkNearby(index: indexPicked)
         totLeft-=1
+    }
+    //what happens after mine has been shown/selected (results)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if(!alive){
             endGame()
         }
