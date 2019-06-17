@@ -336,7 +336,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         print(surMines)
         return surMines
     }
-    //BUTTONS AT TOP
+    //BUTTONS AT TOP OF SCREEN
     //what happens when reset is pressed (used to be called game)
     @IBAction func gamePressed(_ sender: Any) {
        reset()
