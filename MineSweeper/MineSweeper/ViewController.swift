@@ -79,9 +79,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             totMines-=1
         }
     }
+    //ends game
     func endGame(){
         collectionView.isUserInteractionEnabled=false
         facePic.image = UIImage(named: "dead")
+        basicAlert(title: "You blew up", message: "You were alive for \(timer.text!) seconds. Hit reset to try again!")
+    }
+    //makes an alert pop up
+    func basicAlert(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true)
     }
     //BUTTONS AT TOP
     //what happens when reset is pressed (used to be called game)
