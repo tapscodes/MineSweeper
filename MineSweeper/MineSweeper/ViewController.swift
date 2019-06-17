@@ -33,7 +33,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         var timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { [weak self] (_)  in
             time += 0.1
             //stops timer if user picks a mine
-            if(alive){
+            if(alive && totLeft>mines){
             self!.timer.text = String(format: "%.1f", time)
             }
         })
@@ -68,6 +68,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             endGame()
         }
         if(totLeft == mines){
+            collectionView.isUserInteractionEnabled=false
             basicAlert(title: "You Won!", message: "You were alive for \(timer.text!) seconds. Hit reset to try again!")
         }
     }
@@ -118,19 +119,22 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addTextField()
         alert.addTextField()
-        alert.addTextField()
-        alert.textFields![0].placeholder = "Enter width"
-        alert.textFields![1].placeholder = "Enter length"
-        alert.textFields![2].placeholder = "Enter mines"
+        alert.textFields![0].placeholder = "Enter width (width = length)"
+        alert.textFields![1].placeholder = "Enter mines"
+        alert.textFields![0].keyboardType = UIKeyboardType.numberPad
+        alert.textFields![1].keyboardType = UIKeyboardType.numberPad
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action) in
             //sets values entered
             let tempWidth = alert.textFields![0].text
-            let tempLength = alert.textFields![1].text
-            let tempMines = alert.textFields![2].text
+            let tempLength = alert.textFields![0].text
+            let tempMines = alert.textFields![1].text
             width = Int(tempWidth!)!
             length = Int(tempLength!)!
             mines = Int(tempMines!)!
+            if((mines>(length*width)) || (mines<=0)){
+                mines=length*width
+            }
             self.reset()
         }))
         self.present(alert, animated: true)
@@ -343,7 +347,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     //what happens when options are pressed
     @IBAction func optionsPessed(_ sender: Any) {
-        threeTextField(title: "Set up your custom board", message: "Please put in a proper amount of mines -App Creator Tristan P.-S.")
+        threeTextField(title: "Set up your custom board", message: "Don't make the dimensions too large -App Creator Tristan P.-S.")
     }
     //what happens when help is pressed
     @IBAction func helpPressed(_ sender: Any) {
