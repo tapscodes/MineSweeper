@@ -10,7 +10,7 @@ Around 5-6 hours of code.
 ### Did you make the sprites/graphics?
 NONE OF THE SPRITES OR GRAPHICS ARE MINE. Most of them are from the game itself via google images.
 ### What are the controls?
-Controls should be displayed when you click the 'help' button.
+Controls should be displayed when you click the 'help' button. Flags aren't avaliable.
 ### How do I run this?
 1. Download XCode onto your computer. 
 2. Hit the little play button that at the moment of writing this can be found in the top left. 
