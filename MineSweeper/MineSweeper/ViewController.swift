@@ -63,6 +63,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             basicAlert(title: "You Won!", message: "You were alive for \(timer.text!) seconds. Hit reset to try again!")
         }
     }
+    //removes space (horizontally) between items
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
+    // removes space (vertically) between items
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
     //NORMAL FUNCTIONS
     //sets up the mineField array with all the mines
     func setUp(){
@@ -118,9 +126,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }))
         self.present(alert, animated: true)
     }
-    //BUTTONS AT TOP
-    //what happens when reset is pressed (used to be called game)
-    @IBAction func gamePressed(_ sender: Any) {
+    //resets game with new mine spots
+    func reset(){
         mineField.removeAll()
         //resets mine placement after old mines are removed
         viewDidLoad()
@@ -129,16 +136,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         //resets time when game is reset
         time=0
     }
+    //BUTTONS AT TOP
+    //what happens when reset is pressed (used to be called game)
+    @IBAction func gamePressed(_ sender: Any) {
+       reset()
+    }
     //what happens when options are pressed
     @IBAction func optionsPessed(_ sender: Any) {
         threeTextField(title: "Set up your custom board", message: "Depending on size, app may not function well (try to keep dimenstions under 10:10)")
-        mineField.removeAll()
-        //resets mine placement after old mines are removed
-        viewDidLoad()
-        //resets visuals of minefield after mines are replaced in random locations
-        collectionView.reloadData()
-        //resets time when game is reset
-        time=0
+        reset()
     }
     //what happens when help is pressed
     @IBAction func helpPressed(_ sender: Any) {

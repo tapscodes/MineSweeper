@@ -95,12 +95,17 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mt9-fj-GPZ">
-                                                            <rect key="frame" x="-95" y="-39" width="240" height="128"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mt9-fj-GPZ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="0.0"/>
                                                         </imageView>
                                                     </subviews>
                                                 </view>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="Mt9-fj-GPZ" secondAttribute="bottom" id="9e8-ye-76E"/>
+                                                    <constraint firstItem="Mt9-fj-GPZ" firstAttribute="leading" secondItem="oAc-OG-EDO" secondAttribute="leading" id="TQA-2n-eCq"/>
+                                                    <constraint firstItem="Mt9-fj-GPZ" firstAttribute="top" secondItem="oAc-OG-EDO" secondAttribute="top" id="XT9-6M-zIc"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Mt9-fj-GPZ" secondAttribute="trailing" id="dxU-6C-O6Y"/>
+                                                </constraints>
                                                 <size key="customSize" width="50" height="50"/>
                                                 <connections>
                                                     <outlet property="mineImg" destination="Mt9-fj-GPZ" id="wH1-vI-NLe"/>
