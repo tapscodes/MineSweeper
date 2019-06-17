@@ -343,7 +343,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     //what happens when options are pressed
     @IBAction func optionsPessed(_ sender: Any) {
-        threeTextField(title: "Set up your custom board", message: "Depending on size, app may not function well (try to keep dimenstions under 10:10)")
+        threeTextField(title: "Set up your custom board", message: "Please put in a proper amount of mines -App Creator Tristan P.-S.")
     }
     //what happens when help is pressed
     @IBAction func helpPressed(_ sender: Any) {
