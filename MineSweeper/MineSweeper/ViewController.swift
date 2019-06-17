@@ -65,7 +65,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if(totLeft == mines){
             basicAlert(title: "You Won!", message: "You were alive for \(timer.text!) seconds. Hit reset to try again!")
         }
-        mineResult=9
     }
     //removes space (horizontally) between items
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
