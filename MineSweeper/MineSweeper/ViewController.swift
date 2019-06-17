@@ -11,6 +11,7 @@ var time = 0.0
 var width = 8
 var length = 8
 var mines = 8
+var totLeft = 0
 var mineField: [Bool] = []
 var indexPicked = 0
 var alive = true
@@ -22,8 +23,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
-        minesLeft.text = "Mines Left:\(mines)"
+        minesLeft.text = "Total Mines:\(mines)"
         facePic.image = UIImage(named: "happy")
+        totLeft=length*width
         // Do any additional setup after loading the view.
         var timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { [weak self] (_)  in
             time += 0.1
@@ -53,8 +55,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //what happens when a mine spot is clicked
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         indexPicked = indexPath.row
+        totLeft-=1
         if(!alive){
             endGame()
+        }
+        if(totLeft == mines){
+            basicAlert(title: "You Won!", message: "You were alive for \(timer.text!) seconds. Hit reset to try again!")
         }
     }
     //NORMAL FUNCTIONS
